@@ -4,27 +4,40 @@ import sys
 import json
 from urllib.parse import urlparse
 
-
 class Colores:
-    """Clase para agregar colores al texto en consola."""
+    """
+    Clase para agregar colores al texto en la consola para mayor legibilidad.
+    """
     VERDE = '\033[92m'
     ROJO = '\033[91m'
     FIN = '\033[0m'
 
-
 def es_url_valida(url):
-    """Verifica si la URL proporcionada tiene un formato válido."""
+    """
+    Verifica si la URL proporcionada tiene un formato válido.
+
+    Args:
+        url (str): La URL a validar.
+
+    Returns:
+        bool: True si la URL es válida, False en caso contrario.
+    """
     try:
         resultado = urlparse(url)
         return all([resultado.scheme, resultado.netloc])
     except ValueError:
         return False
 
-
 def guardar_en_archivo(datos, archivo="tecnologias.txt"):
     """
     Guarda datos en formato JSON en un archivo.
-    Si el archivo no existe, lo crea. Si ya existe, agrega los datos sin sobrescribir el contenido previo.
+
+    Si el archivo no existe, lo crea. Si ya existe, agrega los datos sin sobrescribir
+    el contenido previo.
+
+    Args:
+        datos (dict): Datos a guardar en el archivo.
+        archivo (str): Nombre del archivo donde se guardarán los datos.
     """
     try:
         # Leer el contenido existente del archivo, si lo hay
@@ -41,13 +54,20 @@ def guardar_en_archivo(datos, archivo="tecnologias.txt"):
     with open(archivo, "w", encoding="utf-8") as f:
         json.dump(contenido, f, indent=4, ensure_ascii=False)
 
-
 def ya_consultado(url, archivo="tecnologias.txt"):
-    """Verifica si la URL ya fue consultada previamente y está en el archivo."""
+    """
+    Verifica si la URL ya fue consultada previamente y está en el archivo.
+
+    Args:
+        url (str): La URL a verificar.
+        archivo (str): Nombre del archivo donde se registran las consultas.
+
+    Returns:
+        bool: True si la URL ya fue consultada, False en caso contrario.
+    """
     try:
         with open(archivo, "r", encoding="utf-8") as f:
             contenido = json.load(f)
-            # Buscar si la URL ya existe en el contenido
             for item in contenido:
                 if url in item:
                     return True
@@ -55,9 +75,15 @@ def ya_consultado(url, archivo="tecnologias.txt"):
         return False
     return False
 
-
 def main():
-    """Función principal del programa."""
+    """
+    Función principal del programa.
+
+    Realiza las siguientes acciones:
+    - Verifica la validez de la URL proporcionada.
+    - Comprueba si la URL ya fue consultada previamente.
+    - Ejecuta el comando para analizar la URL y guarda los resultados en un archivo JSON.
+    """
     if parser.target:
         # Validar que la URL tenga un formato correcto
         if not es_url_valida(parser.target):
@@ -90,7 +116,6 @@ def main():
 
     else:
         print(f"{Colores.ROJO}(-) Ingresa una URL con el argumento '-t' o '--target'.{Colores.FIN}")
-
 
 if __name__ == '__main__':
     # Configurar los argumentos de línea de comandos
