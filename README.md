@@ -120,7 +120,8 @@ Se recomienda utilizar un entorno virtual para manejar las dependencias necesari
 ## **Autor**
 Este proyecto fue desarrollado con el objetivo de facilitar la exploración y análisis de tecnologías y subdominios en entornos web.
 
-Si tienes alguna pregunta o necesitas soporte, no dudes en contactarme. 😊
-```
+Si tienes alguna pregunta o necesitas soporte, no dudes en contactarme
+santiyinguz@gmail.com
+redes sociales
+Linked. 😊
 
-Este archivo `README.md` está bien estructurado y es fácil de entender para cualquier persona que quiera utilizar los scripts. Si necesitas alguna modificación o deseas agregar algo más, házmelo saber. 🚀
