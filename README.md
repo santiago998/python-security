@@ -1,6 +1,5 @@
-Aquí tienes una descripción detallada en formato Markdown para un archivo `README.md` que incluye documentación organizada para los tres códigos que me proporcionaste:
 
-```markdown
+
 # Descripción de Scripts
 
 Este repositorio contiene tres scripts diseñados para realizar tareas relacionadas con la validación, exploración y análisis de dominios y subdominios web. A continuación, se detalla la funcionalidad de cada script.
