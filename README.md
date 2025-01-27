@@ -1,41 +1,127 @@
-# security.py
-codigo para seguridad informatica de ambito educativo - code for computer security in the educational field
+Aquí tienes una descripción detallada en formato Markdown para un archivo `README.md` que incluye documentación organizada para los tres códigos que me proporcionaste:
 
-# Escáner de Seguridad en Python
+```markdown
+# Descripción de Scripts
 
-Este proyecto es un escáner de seguridad básico escrito en Python que permite realizar:
-- Escaneo de puertos comunes (1-1024).
-- Escaneo de vulnerabilidades utilizando Nmap.
+Este repositorio contiene tres scripts diseñados para realizar tareas relacionadas con la validación, exploración y análisis de dominios y subdominios web. A continuación, se detalla la funcionalidad de cada script.
 
-## Requisitos
+---
 
-Antes de ejecutar el programa, asegúrate de tener lo siguiente:
-1. **Python 3.6 o superior** instalado.
-2. **Nmap** instalado y disponible en el PATH del sistema.
+## **1. Explorador de Subdominios**
+### Descripción
+Este script explora posibles subdominios de un dominio objetivo, valida su existencia y detecta tecnologías y encabezados HTTP asociados.
 
-## Instalación
+### Funcionalidades principales:
+- Valida si un subdominio es válido antes de realizar solicitudes.
+- Verifica la existencia de subdominios mediante solicitudes HTTP/HTTPS.
+- Obtiene banners de encabezados HTTP como `Server`, `X-Powered-By`, entre otros.
+- Detecta tecnologías usadas en el sitio web, como WordPress, PHP, ASP.NET, React.js, Angular.js, Vue.js, etc.
+- Manejo de errores en caso de problemas con solicitudes o archivos.
 
-1. Clona este repositorio:
+### Uso:
+```bash
+python subdomain_scanner.py -t <dominio_objetivo>
+```
+
+### Requisitos:
+- **Archivo necesario:** `subdominios.txt` con la lista de posibles subdominios.
+- **Librerías utilizadas:**
+  - `requests`
+  - `os`
+  - `argparse`
+  - `sys`
+
+---
+
+## **2. Explorador de Tecnologías con WAD**
+### Descripción
+Este script utiliza la herramienta `wad` para identificar las tecnologías utilizadas por un sitio web. Registra los resultados en un archivo JSON y permite consultar las URLs analizadas previamente.
+
+### Funcionalidades principales:
+- Verifica si la URL proporcionada tiene un formato válido.
+- Ejecuta la herramienta `wad` para identificar tecnologías usadas en el sitio web.
+- Guarda los resultados en un archivo JSON (`tecnologias.txt`) sin sobrescribir información previa.
+- Permite listar las URLs que ya han sido consultadas.
+
+### Uso:
+1. **Ejecutar para analizar una URL:**
    ```bash
-   git clone https://github.com/tu-usuario/scanner-python.git
+   python tech_explorer.py -t <url_objetivo>
+   ```
+2. **Listar URLs ya analizadas:**
+   ```bash
+   python tech_explorer.py -l
+   ```
 
-python escaner.py
+### Requisitos:
+- **Dependencias externas:**
+  - Herramienta `wad` (Web Application Detector), disponible en el sistema operativo.
+- **Librerías utilizadas:**
+  - `subprocess`
+  - `argparse`
+  - `sys`
+  - `json`
+  - `urllib.parse`
 
-*** Bienvenido al Escáner de Seguridad ***
+---
 
-1. Escaneo de puertos abiertos
-2. Escaneo de vulnerabilidades (usando Nmap)
-3. Salir
+## **3. Analizador de Subdominios (Avanzado)**
+### Descripción
+Este script avanza en la detección de subdominios realizando solicitudes HTTP y analizando encabezados para detectar posibles tecnologías y servicios.
 
-Selecciona una opción: 1
-Ingresa la dirección IP o dominio a escanear: 192.168.1.1
-[+] Puerto 80 está abierto
-[+] Puerto 443 está abierto
-...
+### Funcionalidades principales:
+- Realiza solicitudes `HEAD` para determinar la existencia de subdominios.
+- Analiza encabezados HTTP para detectar servicios y tecnologías específicas.
+- Proporciona un formato detallado de la información encontrada.
+- Registra resultados en la consola para su análisis inmediato.
 
+### Uso:
+```bash
+python advanced_subdomain_analyzer.py -t <dominio_objetivo>
+```
 
-Advertencia
-Este software es solo para fines educativos. No lo utilices sin el permiso del propietario del objetivo.
+### Requisitos:
+- **Archivo necesario:** `subdominios.txt` con una lista de posibles subdominios.
+- **Librerías utilizadas:**
+  - `requests`
+  - `os`
+  - `argparse`
+  - `sys`
 
+---
 
-Con estos pasos, tendrás tu código listo para ser publicado en GitHub de manera profesional.
+## **Instalación de Dependencias**
+Se recomienda utilizar un entorno virtual para manejar las dependencias necesarias. Sigue estos pasos para instalarlas:
+1. Crear un entorno virtual:
+   ```bash
+   python -m venv venv
+   ```
+2. Activar el entorno virtual:
+   - En Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - En macOS/Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+3. Instalar las dependencias:
+   ```bash
+   pip install requests argparse
+   ```
+
+---
+
+## **Notas Importantes**
+- Asegúrate de tener los permisos adecuados para ejecutar los scripts en tu entorno.
+- La herramienta `wad` debe estar correctamente instalada y accesible desde la línea de comandos para el segundo script.
+
+---
+
+## **Autor**
+Este proyecto fue desarrollado con el objetivo de facilitar la exploración y análisis de tecnologías y subdominios en entornos web.
+
+Si tienes alguna pregunta o necesitas soporte, no dudes en contactarme. 😊
+```
+
+Este archivo `README.md` está bien estructurado y es fácil de entender para cualquier persona que quiera utilizar los scripts. Si necesitas alguna modificación o deseas agregar algo más, házmelo saber. 🚀
